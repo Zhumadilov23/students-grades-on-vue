@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grading system</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+        <div id="app">
+            <nav>
+                <ul>
+                    <li><a href="#"><img src="/home/hmator/Загрузки/sdu.jpg" alt="potom"></a></li>
+                    <li><a href="#"><i class="fa-solid fa-cubes"></i><p>Dashboard</p></a></li>
+                    <li><a href="#"><i class="fa-solid fa-earth-africa"></i><p>Academic</p></a></li>
+                    <li><a href="#"><i class="fa-solid fa-poo-storm"></i><p>Operations</p></a></li>
+                    <li><i class="fa-solid fa-grip-lines-vertical"></i></li>
+                    <li><a href="#"><i class="fa-solid fa-tablet"></i></a></li>
+                    <li><a href="#"><i class="fa-solid fa-door-open"></i></a></li>
+                </ul>
+            </nav>
+            <div class="container">
+                <header>
+                    <h3>{{ title }}</h3>
+                    <h2>My grades</h2>
+                    <p><a href="#"><i class="fa-solid fa-arrow-left"></i>Back to Academic panel</a></p>
+                </header>
+                <main>
+                    <div class="main-header">
+                        <select id="termSelect">
+                            <option value="1" @click="showHandler">Show all</option>
+                            <option value="2" @click="showHandler">2019-2020y. (1 term)</option>
+                            <option value="3" @click="showHandler">2019-2020y. (2 term)</option>
+                            <option value="4" @click="showHandler">2020-2021y. (2 term)</option>
+                            <option value="5" @click="showHandler">2021-2022y. (1 term)</option>
+                            <option value="6" @click="showHandler">2021-2022y. (2 term)</option>
+                        </select>
+                        <div class="grade-rate">
+                            </i><p><i class="fa-solid fa-compass-drafting"></i>Grade rate. Use details button, to learn attendance information for every course listed.</p>
+                        </div>
+                    </div>
+                    <div class="main-block" v-if="firstTerm">
+                        <h1>{{ terms[0].term }}</h1>
+                        <div class="main-main">
+                            <div class="div-header">
+                                <ul>
+                                    <li>Course code </li>
+                                    <li>Course title </li>
+                                    <li>Credits </li>
+                                    <li>ECT</li>
+                                    <li>Total</li>
+                                    <li>Letter grade</li>
+                                    <li>Action</li>
+                                </ul>
+                            </div>
+                            <div class="divs" id="one">
+                                <ul>
+                                    <li>{{ terms[0].code }}</li>
+                                    <li>{{ terms[0].title }} </li>
+                                    <li>{{ terms[0].credit }}</li>
+                                    <li>{{ terms[0].ect }}</li>
+                                    <li>{{ terms[0].total }}</li>
+                                    <li>{{ terms[0].grade }}</li>
+                                    <li><show-modal></show-modal></li>                                </ul>
+                            </div>
+                            <div class="divs" id="two">
+                                <ul>
+                                    <li>{{ terms[0].code }}</li>
+                                    <li>{{ terms[0].title }} </li>
+                                    <li>{{ terms[0].credit }}</li>
+                                    <li>{{ terms[0].ect }}</li>
+                                    <li>{{ terms[0].total }}</li>
+                                    <li>{{ terms[0].grade }}</li>
+                                    <li><show-modal></show-modal></li>
+                                </ul>
+                            </div>
+                            <div class="divs" id="three">
+                                <ul>
+                                    <li>{{ terms[0].code }}</li>
+                                    <li>{{ terms[0].title }} </li>
+                                    <li>{{ terms[0].credit }}</li>
+                                    <li>{{ terms[0].ect }}</li>
+                                    <li>{{ terms[0].total }}</li>
+                                    <li>{{ terms[0].grade }}</li>
+                                    <li><show-modal></show-modal></li>                                </ul>
+                            </div>
+                            <div class="divs" id="four">
+                                <ul>
+                                    <li>{{ terms[0].code }}</li>
+                                    <li>{{ terms[0].title }} </li>
+                                    <li>{{ terms[0].credit }}</li>
+                                    <li>{{ terms[0].ect }}</li>
+                                    <li>{{ terms[0].total }}</li>
+                                    <li>{{ terms[0].grade }}</li>
+                                    <li><show-modal></show-modal></li>                                </ul>
+                            </div>
+                            <div class="divs" id="five">
+                                <ul>
+                                    <li>{{ terms[0].code }}</li>
+                                    <li>{{ terms[0].title }} </li>
+                                    <li>{{ terms[0].credit }}</li>
+                                    <li>{{ terms[0].ect }}</li>
+                                    <li>{{ terms[0].total }}</li>
+                                    <li>{{ terms[0].grade }}</li>
+                                    <li><show-modal></show-modal></li>                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-block" v-if="secondTerm">
+                        <h1>{{ terms[0].term }}</h1>
+                        <div class="main-main">
+                            <div class="div-header">
+                                <ul>
+                                    <li>Course code </li>
+                                    <li>Course title </li>
+                                    <li>Credits </li>
+                                    <li>ECT</li>
+                                    <li>Total</li>
+                                    <li>Letter grade</li>
+                                    <li>Action</li>
+                                </ul>
+                            </div>
+                            <div class="divs" id="one">
+                                <ul>
+                                    <li>{{ terms[4].code }}</li>
+                                    <li>{{ terms[4].title }} </li>
+                                    <li>{{ terms[0].credit }}</li>
+                                    <li>{{ terms[0].ect }}</li>
+                                    <li>{{ terms[0].total }}</li>
+                                    <li>{{ terms[0].grade }}</li>
+                                    <li><show-modal></show-modal></li>                                </ul>
+                            </div>
+                            <div class="divs" id="two">
+                                <ul>
+                                    <li>{{ terms[1].code }}</li>
+                                    <li>{{ terms[1].title }} </li>
+                                    <li>{{ terms[0].credit }}</li>
+                                    <li>{{ terms[0].ect }}</li>
+                                    <li>{{ terms[0].total }}</li>
+                                    <li>{{ terms[0].grade }}</li>
+                                    <li><show-modal></show-modal></li>
+                                </ul>
+                            </div>
+                            <div class="divs" id="three">
+                                <ul>
+                                    <li>{{ terms[2].code }}</li>
+                                    <li>{{ terms[2].title }} </li>
+                                    <li>{{ terms[0].credit }}</li>
+                                    <li>{{ terms[0].ect }}</li>
+                                    <li>{{ terms[0].total }}</li>
+                                    <li>{{ terms[0].grade }}</li>
+                                    <li><show-modal></show-modal></li>                                </ul>
+                            </div>
+                            <div class="divs" id="four">
+                                <ul>
+                                    <li>{{ terms[3].code }}</li>
+                                    <li>{{ terms[3].title }} </li>
+                                    <li>{{ terms[0].credit }}</li>
+                                    <li>{{ terms[0].ect }}</li>
+                                    <li>{{ terms[0].total }}</li>
+                                    <li>{{ terms[0].grade }}</li>
+                                    <li><show-modal></show-modal></li>                                </ul>
+                            </div>
+                            <div class="divs" id="five">
+                                <ul>
+                                    <li>{{ terms[4].code }}</li>
+                                    <li>{{ terms[4].title }} </li>
+                                    <li>{{ terms[0].credit }}</li>
+                                    <li>{{ terms[0].ect }}</li>
+                                    <li>{{ terms[0].total }}</li>
+                                    <li>{{ terms[0].grade }}</li>
+                                    <li><show-modal></show-modal></li>                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-block" v-if="thirdTerm">
+                        <h1>{{ terms[0].term }}</h1>
+                        <div class="main-main">
+                            <div class="div-header">
+                                <ul>
+                                    <li>Course code </li>
+                                    <li>Course title </li>
+                                    <li>Credits </li>
+                                    <li>ECT</li>
+                                    <li>Total</li>
+                                    <li>Letter grade</li>
+                                    <li>Action</li>
+                                </ul>
+                            </div>
+                            <div class="divs" id="one">
+                                <ul>
+                                    <li>{{ terms[4].code }}</li>
+                                    <li>{{ terms[4].title }} </li>
+                                    <li>{{ terms[0].credit }}</li>
+                                    <li>{{ terms[0].ect }}</li>
+                                    <li>{{ terms[0].total }}</li>
+                                    <li>{{ terms[0].grade }}</li>
+                                    <li><show-modal></show-modal></li>                                </ul>
+                            </div>
+                            <div class="divs" id="two">
+                                <ul>
+                                    <li>{{ terms[3].code }}</li>
+                                    <li>{{ terms[3].title }} </li>
+                                    <li>{{ terms[0].credit }}</li>
+                                    <li>{{ terms[0].ect }}</li>
+                                    <li>{{ terms[0].total }}</li>
+                                    <li>{{ terms[0].grade }}</li>
+                                    <li><show-modal></show-modal></li>
+                                </ul>
+                            </div>
+                            <div class="divs" id="three">
+                                <ul>
+                                    <li>{{ terms[2].code }}</li>
+                                    <li>{{ terms[2].title }} </li>
+                                    <li>{{ terms[0].credit }}</li>
+                                    <li>{{ terms[0].ect }}</li>
+                                    <li>{{ terms[0].total }}</li>
+                                    <li>{{ terms[0].grade }}</li>
+                                    <li><show-modal></show-modal></li>                                </ul>
+                            </div>
+                            <div class="divs" id="four">
+                                <ul>
+                                    <li>{{ terms[1].code }}</li>
+                                    <li>{{ terms[1].title }} </li>
+                                    <li>{{ terms[0].credit }}</li>
+                                    <li>{{ terms[0].ect }}</li>
+                                    <li>{{ terms[0].total }}</li>
+                                    <li>{{ terms[0].grade }}</li>
+                                    <li><show-modal></show-modal></li>                                </ul>
+                            </div>
+                            <div class="divs" id="five">
+                                <ul>
+                                    <li>{{ terms[0].code }}</li>
+                                    <li>{{ terms[0].title }} </li>
+                                    <li>{{ terms[0].credit }}</li>
+                                    <li>{{ terms[0].ect }}</li>
+                                    <li>{{ terms[0].total }}</li>
+                                    <li>{{ terms[0].grade }}</li>
+                                    <li><show-modal></show-modal></li>                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-block" v-if="fourthTerm">
+                        <h1>{{ terms[0].term }}</h1>
+                        <div class="main-main">
+                            <div class="div-header">
+                                <ul>
+                                    <li>Course code </li>
+                                    <li>Course title </li>
+                                    <li>Credits </li>
+                                    <li>ECT</li>
+                                    <li>Total</li>
+                                    <li>Letter grade</li>
+                                    <li>Action</li>
+                                </ul>
+                            </div>
+                            <div class="divs" id="one">
+                                <ul>
+                                    <li>{{ terms[2].code }}</li>
+                                    <li>{{ terms[2].title }} </li>
+                                    <li>{{ terms[0].credit }}</li>
+                                    <li>{{ terms[0].ect }}</li>
+                                    <li>{{ terms[0].total }}</li>
+                                    <li>{{ terms[0].grade }}</li>
+                                    <li><show-modal></show-modal></li>                                </ul>
+                            </div>
+                            <div class="divs" id="two">
+                                <ul>
+                                    <li>{{ terms[1].code }}</li>
+                                    <li>{{ terms[1].title }} </li>
+                                    <li>{{ terms[0].credit }}</li>
+                                    <li>{{ terms[0].ect }}</li>
+                                    <li>{{ terms[0].total }}</li>
+                                    <li>{{ terms[0].grade }}</li>
+                                    <li><show-modal></show-modal></li>
+                                </ul>
+                            </div>
+                            <div class="divs" id="three">
+                                <ul>
+                                    <li>{{ terms[4].code }}</li>
+                                    <li>{{ terms[4].title }} </li>
+                                    <li>{{ terms[0].credit }}</li>
+                                    <li>{{ terms[0].ect }}</li>
+                                    <li>{{ terms[0].total }}</li>
+                                    <li>{{ terms[0].grade }}</li>
+                                    <li><show-modal></show-modal></li>                                </ul>
+                            </div>
+                            <div class="divs" id="four">
+                                <ul>
+                                    <li>{{ terms[3].code }}</li>
+                                    <li>{{ terms[3].title }} </li>
+                                    <li>{{ terms[0].credit }}</li>
+                                    <li>{{ terms[0].ect }}</li>
+                                    <li>{{ terms[0].total }}</li>
+                                    <li>{{ terms[0].grade }}</li>
+                                    <li><show-modal></show-modal></li>                                </ul>
+                            </div>
+                            <div class="divs" id="five">
+                                <ul>
+                                    <li>{{ terms[0].code }}</li>
+                                    <li>{{ terms[0].title }} </li>
+                                    <li>{{ terms[0].credit }}</li>
+                                    <li>{{ terms[0].ect }}</li>
+                                    <li>{{ terms[0].total }}</li>
+                                    <li>{{ terms[0].grade }}</li>
+                                    <li><show-modal></show-modal></li>                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-block" v-if="fivethTerm">
+                        <h1>{{ terms[0].term }}</h1>
+                        <div class="main-main">
+                            <div class="div-header">
+                                <ul>
+                                    <li>Course code </li>
+                                    <li>Course title </li>
+                                    <li>Credits </li>
+                                    <li>ECT</li>
+                                    <li>Total</li>
+                                    <li>Letter grade</li>
+                                    <li>Action</li>
+                                </ul>
+                            </div>
+                            <div class="divs" id="one">
+                                <ul>
+                                    <li>{{ terms[0].code }}</li>
+                                    <li>{{ terms[0].title }} </li>
+                                    <li>{{ terms[0].credit }}</li>
+                                    <li>{{ terms[0].ect }}</li>
+                                    <li>{{ terms[0].total }}</li>
+                                    <li>{{ terms[0].grade }}</li>
+                                    <li><show-modal></show-modal></li>                                </ul>
+                            </div>
+                            <div class="divs" id="two">
+                                <ul>
+                                    <li>{{ terms[4].code }}</li>
+                                    <li>{{ terms[4].title }} </li>
+                                    <li>{{ terms[0].credit }}</li>
+                                    <li>{{ terms[0].ect }}</li>
+                                    <li>{{ terms[0].total }}</li>
+                                    <li>{{ terms[0].grade }}</li>
+                                    <li><show-modal></show-modal></li>
+                                </ul>
+                            </div>
+                            <div class="divs" id="three">
+                                <ul>
+                                    <li>{{ terms[1].code }}</li>
+                                    <li>{{ terms[1].title }} </li>
+                                    <li>{{ terms[0].credit }}</li>
+                                    <li>{{ terms[0].ect }}</li>
+                                    <li>{{ terms[0].total }}</li>
+                                    <li>{{ terms[0].grade }}</li>
+                                    <li><show-modal></show-modal></li>                                </ul>
+                            </div>
+                            <div class="divs" id="four">
+                                <ul>
+                                    <li>{{ terms[2].code }}</li>
+                                    <li>{{ terms[2].title }} </li>
+                                    <li>{{ terms[0].credit }}</li>
+                                    <li>{{ terms[0].ect }}</li>
+                                    <li>{{ terms[0].total }}</li>
+                                    <li>{{ terms[0].grade }}</li>
+                                    <li><show-modal></show-modal></li>                                </ul>
+                            </div>
+                            <div class="divs" id="five">
+                                <ul>
+                                    <li>{{ terms[3].code }}</li>
+                                    <li>{{ terms[3].title }} </li>
+                                    <li>{{ terms[0].credit }}</li>
+                                    <li>{{ terms[0].ect }}</li>
+                                    <li>{{ terms[0].total }}</li>
+                                    <li>{{ terms[0].grade }}</li>
+                                    <li><show-modal></show-modal></li>                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <footer>
+                    <div class="footer-left">
+                        <h6 id="twenty-two">2022</h6>
+                        <h6>Suleyman Demirel University</h6>
+                    </div>
+                    <div class="footer-right">
+                        <h6><a href="#">Rules and Regulations</a></h6>
+                        <h6><a href="#">Releases</a></h6>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <!-- Modal window-->
+
+</body>
+<script src="https://unpkg.com/vue@3"></script>
+
+<script src="index.js"></script>
+</html>
